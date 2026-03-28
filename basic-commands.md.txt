@@ -1,0 +1,18 @@
+Linux basic commands
+
+pwd - Show current directory
+
+ls - List files
+
+cd - Change directory
+
+
+File operations
+
+touch -> Create File
+
+cp -> Copy File
+
+mv -> move/rename file
+
+rm -> delete file
