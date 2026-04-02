@@ -1,0 +1,54 @@
+write a robust and secure shell script named /find.sh that:
+
+Accepts exactly one argument: a filename pattern to search for.
+
+Counts how many regular files inside /home and its subdirectories match the given pattern.
+
+Displays an error and exits if:
+
+No argument is provided
+
+More than one argument is provided
+
+The /home directory is missing
+
+The find command fails during execution
+
+Handles file names with spaces or special characters correctly.
+
+Prints the final output in the format:
+
+Found X matching file(s) in /home and its subdirectories.
+
+
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+error_exit() {
+echo "Error $1" >&2
+exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+   error_exit "Only one argument is allowed"
+fi
+
+pattern="$1"
+
+if [ ! -d "/home" ]; then
+   error_exit "Home directory not found"
+fi
+
+count=0
+
+     while IFS= read -r -d '' file; do
+     count=$((count + 1))
+     done < <(find /home -type f -name "$pattern" -print0) || \
+     error_exit "Find command failed"
+
+
+
+echo "Found $count matching files in /home and its subdirectories"
