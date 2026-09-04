@@ -1,0 +1,91 @@
+Container Image Creation 
+
+We are going to create container image using podman as user jordy.
+We will build a container image named web_image using the container file located at http://repo.rhcsa.home/containers/Containerfile.
+
+We will deploy jordy_web with the following:
+
+*Map host port 8000 -> container port 80.
+*Map the host directory /opt/user_files to container directory /opt/userfiles. Files should be accessible
+*Configure the container as a systemd service to start on boot
+
+ANS:  check the status of podman
+     
+     # systemctl status podman
+
+     # loginctl enable-linger jordy
+ 
+     # exit
+   
+     # su - jordy
+    
+     # podman image list 
+
+
+     # podman image build -t web_image -f   http://repo.rhcsa.home/containers/Containerfile 
+
+
+     # podman image list
+   
+     if we need to login to container registry
+  
+     
+    eg:  # podman login registry.redhat.com 
+     
+        then username:
+             password:
+     
+   # podman run -dit --name jordy_web -p 8000:80 -v /opt/user_file:/opt/userfiles:Z web_image  
+
+   
+   #  podman ps 
+ 
+   # podman exec -it jordy_web /bin/bash
+  
+   # cd /opt/userfiles
+  
+   # ls 
+  
+   # echo "Linux" >> rhcsa.txt
+   
+  # ls
+
+  # exit
+
+  # podman generate systemd --new --files --new jordy_web 
+
+
+ # mkdir -p ~/.config/systemd/user
+ 
+# mv container-jordy_web.service  ~/.config/systemd/user
+
+
+# podman stop jordy_web
+ 
+# podman ps -a
+
+# podman rm jordy_web
+
+# podman ps 
+
+# systemctl --user daemon-reload
+
+# loginctl enable-linger 
+
+# systemctl --user enable --now container-haruna_web.service
+
+# systemctl --user status container-haruna_web.service
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+    
