@@ -1,0 +1,21 @@
+File Links 
+ 
+In /shorts directory
+
+   Create a file file_a
+   
+   Create a soft link file_b pointing to file_a
+   
+   Create hard link file_c pointing to file_a
+  
+   verify all links work
+  
+
+Ans: cd /shorts
+     touch file_a
+    
+     ln -s  file_a  file_b
+  
+     ln file_a file_c
+   
+      ls -al

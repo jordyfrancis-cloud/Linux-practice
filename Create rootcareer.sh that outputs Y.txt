@@ -1,0 +1,23 @@
+Create /root/career.sh that outputs "Yes, I am a Systems Engineer." When run with ./career.sh me
+ Okay, then do cloud engineering." when run with ./career.sh they
+
+
+vi /root/career.sh
+
+if ["$1" == "me"]
+then 
+      echo "Yes, I'm a systems engineer."
+elif ["$1" == "they]
+then 
+      echo "Okay, they do cloud engineering."
+elif [-z "$1"]
+        echo "Please provide an argument"
+
+else 
+    echo "Error"
+
+fi
+
+save and exit :wq!
+  
+chmod +x /root/career.sh

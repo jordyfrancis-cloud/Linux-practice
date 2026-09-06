@@ -1,0 +1,28 @@
+Advanced File Operations
+
+Find files in /usr that are greater than 3MB but < 10MB and copy them to /bigfiles directory
+
+Find files in /etc modified more than 120 days ago and copy them to /var/tmp/twenty
+
+Find all files owned by user hadoga and copy them to /root/h-files
+
+Find a file named "httpd.conf" and save the absolute path to /root/httpd-paths.txt
+
+ANS:  find /usr -type f -size +3M  -size -10M -exec cp {} /bigfiles \;
+ 
+      ls /bigfiles
+
+     
+       ls /var/tmp/twenty
+  
+       find /etc -type f -mtime +120 -exec cp {} /var/tmp/twenty \;
+
+    
+      find / -type f -user hadoga -exec cp {} /root/h-file \;
+  
+    
+      find / -type f -name httpd.conf >> /root/httpd-paths.txt
+
+      
+  
+      
